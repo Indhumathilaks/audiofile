@@ -27,15 +27,148 @@ Step 7: Save and run the application.
 
 ## PROGRAM:
 ```
-/*
 Program to play and control the audio file”.
-Developed by:
-Registeration Number :
-*/
+Developed by: INDHUMATHI L
+Registeration Number : 212224220037
+
 ```
+## ACTIVITY_MAIN.XML
+```
+package com.example.audiofile;
+
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private MediaPlayer mediaPlayer;
+
+    private Button btnPlay;
+    private Button btnPause;
+    private Button btnStop;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        // Connect buttons
+        btnPlay = findViewById(R.id.btnPlay);
+        btnPause = findViewById(R.id.btnPause);
+        btnStop = findViewById(R.id.btnStop);
+
+        // Load audio file
+        mediaPlayer = MediaPlayer.create(this, R.raw.song);
+
+        // Play button
+        btnPlay.setOnClickListener(v -> {
+            if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+            }
+        });
+
+        // Pause button
+        btnPause.setOnClickListener(v -> {
+            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+            }
+        });
+
+        // Stop button
+        btnStop.setOnClickListener(v -> {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer = MediaPlayer.create(this, R.raw.song);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+}
+```
+## MAINACTIVITY.JAVA
+```
+package com.example.audiofile;
+
+import android.media.MediaPlayer;
+import android.os.Bundle;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+
+    private MediaPlayer mediaPlayer;
+
+    private Button btnPlay;
+    private Button btnPause;
+    private Button btnStop;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        // Connect buttons
+        btnPlay = findViewById(R.id.btnPlay);
+        btnPause = findViewById(R.id.btnPause);
+        btnStop = findViewById(R.id.btnStop);
+
+        // Load audio file
+        mediaPlayer = MediaPlayer.create(this, R.raw.song);
+
+        // Play button
+        btnPlay.setOnClickListener(v -> {
+            if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
+                mediaPlayer.start();
+            }
+        });
+
+        // Pause button
+        btnPause.setOnClickListener(v -> {
+            if (mediaPlayer != null && mediaPlayer.isPlaying()) {
+                mediaPlayer.pause();
+            }
+        });
+
+        // Stop button
+        btnStop.setOnClickListener(v -> {
+            if (mediaPlayer != null) {
+                mediaPlayer.stop();
+                mediaPlayer = MediaPlayer.create(this, R.raw.song);
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+            mediaPlayer = null;
+        }
+    }
+}
+```
+
 
 ## OUTPUT
 
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/c8f980f6-3852-45f5-b37f-a6ec55512077" />
 
 
 
